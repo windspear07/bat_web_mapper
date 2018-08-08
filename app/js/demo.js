@@ -22,27 +22,21 @@ $(function () {
 
     ///做图版
     var container = document.getElementById('main_panel');
-
+    //当前area
+    var current_area_name;
     ///当前节点信息
     var selected_node_id = '';
     var selected_node_x;
     var selected_node_y;
 
+    //做图数据缓存
     var nodes;
     var edges;
-    var network;
     var data;
+    var network;
 
+    //form
     var $form = $("#room_form");
-
-
-    /***
-     * 1. node 详细信息展示框 ok
-     * 2. 添加node的测试功能
-     * 3. 全图保存功能
-     * 4. 全图加载功能
-     *
-     * */
 
     //生成测试节点
     function getTestNode() {
@@ -73,6 +67,80 @@ $(function () {
         };
 
         return demo;
+    }
+
+    //todo
+    //添加新room
+    function addRoom( newRoom ) {
+        //非空判断
+        if( JSON.stringify(newRoom) == "{}"){
+            return;
+        }
+
+        //是否需要切换area
+        if( newRoom.areaName !== current_area_name ){
+            moveArea(newRoom.areaName);
+        }
+
+        //if the room is already in the map
+        var exist = false;
+        $.each( network.nodes._data, function (k,v) {
+           //判断id,如果存在则返回
+            if( k === newRoom.id ){
+                console.log('this node is already in the room. ');
+                exist = true;
+            }
+        });
+
+        //开始画新的点
+        if(!exist){
+            //从当前节点开始画，判断方向 nswe other
+            //根据方向，参考当前节点，计算新的坐标
+            //如果坐标有房间，则半径*1.5， 角度+37（与45互质）
+            //根据室内外，切换不同的图片
+            //add node to network
+        }
+
+        //添加新的线
+        exist = false;
+        $.each( network.edges._data, function (k,v) {
+            //判断是一根线
+            //from 、to都一样
+            //描述内容也一样
+        });
+
+        //计算path
+
+        //划线
+        if(!exist){
+            // data.edges.add({
+            //     from: selected_node_id,
+            //     to: new_node.id,
+            //     label:direction,
+            //     arrows:'to'
+            // });
+        };
+
+        //update
+
+        //切换为当前选定的点
+        pickRoom(newRoom.id);
+
+        //3s后回传本节点、edge信息给服务器
+    }
+
+    //切换区域
+    function moveArea( areaName ) {
+
+        //load area 数据
+
+        //加载新数据
+    }
+
+    //todo
+    //切换到指定room
+    function pickRoom( roomId ) {
+
     }
 
     //测试添加第一个节点
@@ -154,6 +222,7 @@ $(function () {
             nodes_save.push(v);
         });
 
+        console.log("eee ", data.edges._data);
         console.log("result ", nodes_save);
         console.log("result json ", JSON.stringify(nodes_save));
 
