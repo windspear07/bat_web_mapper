@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-CN"/>
+
+    <title>mapper demo</title>
+
+    <link href="vendor/css/vis.css" rel="stylesheet" type="text/css"/>
+    <link href="vendor/css/bootstrap-3.2.0.min.css" rel="stylesheet" type="text/css">
+
+    <link href="./app/css/va.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="vendor/js/vis-4.20.1.min.js"></script>
+    <script type="text/javascript" src="vendor/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="vendor/js/bootstrap-3.2.0.min.js"></script>
+
+    <script type="text/javascript" src="app/js/demo.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div id="main_panel" class="col-sm-8"></div>
+
+            <div id="room_info" class="col-sm-4">
+                <form id="room_form" role="form">
+                    <div class="form-group">
+                        <!--<label for="areaName">areaName</label>-->
+                        <input type="text" class="form-control" id="name" name="areaName" placeholder="area name" value="areaName 01">
+                    </div>
+                    <div class="form-group">
+                        <!--<label for="roomId">roomId</label>-->
+                        <input type="text" class="form-control" id="roomId" name="id" placeholder="roomId">
+                    </div>
+                    <div class="form-group">
+                        <!--<label for="shortDesc">long description</label>-->
+                        <textarea id="shortDesc" class="form-control" rows="2" name="shortDesc">short desc
+
+
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <!--<label for="longDesc">long description</label>-->
+                        <textarea id="longDesc" class="form-control" rows="4" name="longDesc">long desc
+    s
+                        </textarea>
+                    </div>
+
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="isEntrance">is entrance ?
+                    </label>
+                    </div>
+
+                    <div class="form-group">
+                        <!--<label for="exits">exits</label>-->
+                        <input type="text" class="form-control" id="exits" placeholder="exits" name="exits">
+                    </div>
+
+                    <div class="form-group">
+                        <!--<label for="path">path</label>-->
+                        <input type="text" class="form-control" id="path" placeholder="path" name="path">
+                    </div>
+
+                    <div class="form-group">
+                        <!--<label for="note">note</label>-->
+                        <textarea id="note" class="form-control" rows="2" name="note">notes
+    sdfsdf
+    s                    </textarea>
+                    </div>
+
+                    <button id="test_add_first" type="button" class="btn btn-default">Add first room</button><br>
+                    <button id="test_add_node" type="button" class="btn btn-default">Add random room from selected room</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

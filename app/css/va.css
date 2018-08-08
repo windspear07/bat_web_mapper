@@ -1,0 +1,11 @@
+body {
+    font: 10pt sans;
+}
+
+#main_panel {
+    /*float: left;*/
+    /*width: 800px;*/
+    height: 600px;
+    border: 1px solid lightgray;
+    background-color : #cccccc;
+}
