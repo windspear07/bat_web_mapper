@@ -147,6 +147,44 @@ $(function () {
     });
 
 
+    //测试添加第一个节点
+    $("#test_save").on( "click", function (e) {
+        var nodes_save = [];
+        $.each( data.nodes._data, function (k,v) {
+            nodes_save.push(v);
+        });
+
+        console.log("result ", nodes_save);
+        console.log("result json ", JSON.stringify(nodes_save));
+
+
+        var edges_save = [];
+        $.each( data.edges._data, function (k,v) {
+            edges_save.push(v);
+        });
+
+
+        console.log("result ", edges_save);
+        console.log("result json ", JSON.stringify(edges_save));
+
+        e.stopPropagation();
+    });
+
+    $("#test_clear").on("click",function (e) {
+        init([],[]);
+        e.stopPropagation();
+    });
+
+    $("#test_load").on("click",function (e) {
+        var nodes_str = " [{\"id\":\"room:38844\",\"areaName\":\"newbie area\",\"shortDesc\":\"room:38844, short desc blah.....\",\"longDesc\":\"room:38844, long desc, wow wowo wow wow ....\",\"isEntrance\":false,\"path\":\"room:38844 north;east;south;\",\"isCurrent\":true,\"isDrawn\":true,\"isIndoor\":false,\"picked\":false,\"exits\":\"room:38844,s,n,e,ne,enter\",\"note\":\"room:38844 just a new room, i like it\",\"label\":\"room:38844\",\"title\":\"这是title字段！<br>可以将详细内容<br>放在这里的\",\"image\":\"./test/img/qqjiamo14.jpg\",\"shape\":\"image\",\"detail_url\":\"http:///www.qq.com\",\"x\":0,\"y\":0},{\"id\":\"room:57460\",\"areaName\":\"newbie area\",\"shortDesc\":\"room:57460, short desc blah.....\",\"longDesc\":\"room:57460, long desc, wow wowo wow wow ....\",\"isEntrance\":false,\"path\":\"room:57460 north;east;south;\",\"isCurrent\":true,\"isDrawn\":true,\"isIndoor\":false,\"picked\":false,\"exits\":\"room:57460,s,n,e,ne,enter\",\"note\":\"room:57460 just a new room, i like it\",\"label\":\"room:57460\",\"title\":\"这是title字段！<br>可以将详细内容<br>放在这里的\",\"image\":\"./test/img/qqjiamo18.jpg\",\"shape\":\"image\",\"detail_url\":\"http:///www.qq.com\",\"x\":149.97734828966674,\"y\":149.97734828966674},{\"id\":\"room:763\",\"areaName\":\"newbie area\",\"shortDesc\":\"room:763, short desc blah.....\",\"longDesc\":\"room:763, long desc, wow wowo wow wow ....\",\"isEntrance\":false,\"path\":\"room:763 north;east;south;\",\"isCurrent\":true,\"isDrawn\":true,\"isIndoor\":false,\"picked\":false,\"exits\":\"room:763,s,n,e,ne,enter\",\"note\":\"room:763 just a new room, i like it\",\"label\":\"room:763\",\"title\":\"这是title字段！<br>可以将详细内容<br>放在这里的\",\"image\":\"./test/img/qqjiamo34.jpg\",\"shape\":\"image\",\"detail_url\":\"http:///www.qq.com\",\"x\":299.9546965793335,\"y\":299.9546965793335},{\"id\":\"room:19446\",\"areaName\":\"newbie area\",\"shortDesc\":\"room:19446, short desc blah.....\",\"longDesc\":\"room:19446, long desc, wow wowo wow wow ....\",\"isEntrance\":false,\"path\":\"room:19446 north;east;south;\",\"isCurrent\":true,\"isDrawn\":true,\"isIndoor\":false,\"picked\":false,\"exits\":\"room:19446,s,n,e,ne,enter\",\"note\":\"room:19446 just a new room, i like it\",\"label\":\"room:19446\",\"title\":\"这是title字段！<br>可以将详细内容<br>放在这里的\",\"image\":\"./test/img/qqjiamo16.jpg\",\"shape\":\"image\",\"detail_url\":\"http:///www.qq.com\",\"x\":289,\"y\":-115}]";
+
+        var edges_str = " [{\"from\":\"room:38844\",\"to\":\"room:57460\",\"label\":\"enter\",\"arrows\":\"to\",\"id\":\"debca060-a827-4e1b-8bf2-a63552e70d9f\"},{\"from\":\"room:57460\",\"to\":\"room:763\",\"label\":\"enter\",\"arrows\":\"to\",\"id\":\"4bb6530e-0a78-44a1-b118-3941be1c3786\"},{\"from\":\"room:57460\",\"to\":\"room:19446\",\"label\":\"enter\",\"arrows\":\"to\",\"id\":\"f19ee760-45e1-4974-b712-eb0a1ebece28\"}]";
+
+        init( JSON.parse(nodes_str), JSON.parse(edges_str));
+
+        e.stopPropagation();
+    });
+
     ///默认配置
     var options = {
         physics: {
@@ -173,10 +211,16 @@ $(function () {
     };
 
     ///初始化
-    function init() {
+    /**
+     *
+     * @param nodes 点数组
+     * @param edges edges数组
+     */
+    function init(nodes_input,edges_input) {
+
         ///包装成dataset
-        nodes = new vis.DataSet([]);
-        edges = new vis.DataSet([]);
+        nodes = new vis.DataSet(nodes_input);
+        edges = new vis.DataSet(edges_input);
         data = {
             nodes: nodes,
             edges: edges
@@ -304,5 +348,5 @@ $(function () {
         // });
     }
 
-    init();
+    init([],[]);
 });
