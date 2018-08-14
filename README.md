@@ -1,4 +1,5 @@
 
+
 #### done
 
 1. 拓展房间数据结构
@@ -20,3 +21,12 @@
 待续
 
 
+This project is dual licensed under both
+
+The Apache 2.0 License
+http://www.apache.org/licenses/LICENSE-2.0
+and
+The MIT License
+http://opensource.org/licenses/MIT
+
+It may be distributed under either license.
